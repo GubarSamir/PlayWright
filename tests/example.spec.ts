@@ -1,6 +1,7 @@
+import { test, expect, type Page } from '@playwright/test';
 const {webkit, chromium, firefox} = require('playwright');
 
-(async () => {
+test('screenshot', async () => {
     for (const browserType of [webkit, chromium, firefox]){
         const browser = await browserType.launch();
         const page = await browser.newPage();
@@ -11,4 +12,4 @@ const {webkit, chromium, firefox} = require('playwright');
         await browser.close();
         console.log('succes ' + browserType.name())
     }
-})();
+});
