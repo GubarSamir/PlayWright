@@ -8,7 +8,7 @@ test('has title', async ({ page }) => {
   await page.goto('https://www.fozzy.ua/ua/restaurants/');
 
   // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/Playwright/);
+  await expect(page).toHaveTitle(/РЕСТОРАНИ/);
 });
 
 test('get started link', async ({ page }) => {
