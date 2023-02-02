@@ -1,23 +1,9 @@
-import { test, expect, type Page } from '@playwright/test';
 const {webkit, chromium, firefox, devices, request} = require('playwright');
 const iPhone13Pro = devices['iPhone 11 Pro'];
 
 
-test('screenshot', async () => {
-    for (const browserType of [webkit, chromium, firefox]){
-        const browser = await browserType.launch();
-        const page = await browser.newPage();
-        await page.goto('https://www.fozzy.ua/ua/restaurants/');
-        await page.screenshot({
-            path: `screenshot-${browserType.name()}.png`,
-        });
-        await browser.close();
-        console.log('succes ' + browserType.name())
-    }
-});
 
-
-test('openPnone', async () => {
+(async () => {
     const browser = await webkit.launch({
         headless: false,
     });
@@ -26,10 +12,11 @@ test('openPnone', async () => {
     });
     const page = await context.newPage();
     await page.goto('https://www.fozzy.ua/ua/restaurants/');
-});
+})();
 
 
-test('openGeolocation', async () => {
+
+(async () => {
     const browser = await chromium.launch({
         headless: false,
     });
@@ -39,10 +26,12 @@ test('openGeolocation', async () => {
     });
     const page = await context.newPage();
     await page.goto('https:/maps.google.com');
-});
+})();
 
 
-test('stopAdvertising', async () => {
+
+
+(async () => {
         const browser = await chromium.launch({
             headless: false,
         });
@@ -59,4 +48,4 @@ test('stopAdvertising', async () => {
                 route.continue;
         })
         await page.goto('https://www.fozzy.ua/ua/restaurants/');
-    });
+    })();
